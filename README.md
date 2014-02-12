@@ -1,4 +1,4 @@
 DockerFiles
 ===========
 
-Docker files for creating images.
+Docker files for creating custom images.
