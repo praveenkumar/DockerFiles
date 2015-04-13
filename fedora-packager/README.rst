@@ -18,6 +18,8 @@ HOW TO BUILD
         + rm - Remove intermediate containers
         + t - Build tag
 
+- You also need to execute `fedora-packager-setup` after running the container first time to setup required certificate and you are good to go.
+
 HOW TO RUN
 ----------
 
