@@ -1,6 +1,6 @@
-===========
-Fedora-Jenkins
-===========
+==============
+Fedora-ipython
+==============
 
 Fedora docker file for ipython notebook service which managed by supervisor
 
