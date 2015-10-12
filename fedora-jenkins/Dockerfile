@@ -3,7 +3,7 @@ MAINTAINER Praveen Kumar "kumarpraveen.nitdgp@gmail.com"
 
 RUN yum -y update
 RUN yum -y install openssh-server
-RUN yum -y install supervisor
+RUN yum -y install supervisor initscripts
 RUN yum -y install java
 RUN curl http://pkg.jenkins-ci.org/redhat/jenkins.repo > /etc/yum.repos.d/jenkins.repo
 RUN rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
