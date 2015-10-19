@@ -1,4 +1,4 @@
-FROM fedora
+FROM fedora:latest
 MAINTAINER Praveen Kumar <kumarpraveen.nitdgp@gmail.com>
 
 RUN dnf -y update; dnf clean all
