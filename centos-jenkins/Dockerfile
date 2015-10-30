@@ -1,20 +1,18 @@
 FROM centos:latest
 MAINTAINER Praveen Kumar "kumarpraveen.nitdgp@gmail.com"
 
-RUN yum -y update
-RUN yum -y install java
+RUN yum -y update && yum -y install java initscripts && yum clean all
 RUN curl http://pkg.jenkins-ci.org/redhat/jenkins.repo > /etc/yum.repos.d/jenkins.repo
+RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && yum clean all
 RUN rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
-RUN yum -y install jenkins
+RUN yum -y install jenkins supervisor && yum clean all
 
-ADD etc/jenkins /etc/init.d/jenkins
-RUN chmod +x /etc/init.d/jenkins
-
-ADD start.sh /scripts/start.sh
-RUN chmod +x /scripts/start.sh
-
-EXPOSE 8080
+RUN rm -rf /var/run/jenkins.pid
 
 VOLUME ["/var/lib/jenkins"]
 
-ENTRYPOINT ["/scripts/start.sh"]
+EXPOSE 8080
+
+ADD supervisord.conf /etc/supervisord.conf
+
+CMD [ "supervisord", "-n" ]
