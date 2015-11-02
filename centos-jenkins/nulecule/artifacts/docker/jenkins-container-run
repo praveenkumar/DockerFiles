@@ -1,0 +1,1 @@
+docker run --name=jenkins -d --publish $NODE_PORT:8080 $image

@@ -1,0 +1,47 @@
+{
+  "kind": "ReplicationController",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "jenkins"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "app": "jenkins"
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "jenkins"
+        },
+        "name": "jenkins"
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "jenkins",
+            "image": "$image",
+            "ports": [
+              {
+                "name": "jenkins-http",
+                "containerPort": 8080
+              }
+            ],
+            "volumeMounts": [
+              {
+                "mountPath": "/var/lib/jenkins",
+                "name": "jenkins-persistent-storage"
+              }
+            ]
+          }
+        ],
+        "volumes": [
+          {
+            "emptyDir": {},
+            "name": "jenkins-persistent-storage"
+          }
+        ]
+      }
+    }
+  }
+}
